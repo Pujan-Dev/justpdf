@@ -1,6 +1,6 @@
 # justpdf - PDF Reader
 
-A lightweight, high-performance PDF text extraction library with a pandas-style API. Better and faster than PyPDF2.
+A lightweight, high-performance PDF text extraction library with a pandas-style API.
 
 ## Features
 
@@ -137,18 +137,6 @@ justpdf is optimized for speed with multiple techniques:
 - PyPDF2: 10ms
 - **3x faster!**
 
-## Comparison with PyPDF2
-
-| Feature | justpdf | PyPDF2 |
-|---------|---------|--------|
-| Pandas-style API | ✅ | ❌ |
-| Zero dependencies | ✅ | ❌ |
-| Google Docs PDFs | ✅ | ⚠️ |
-| Performance | 21ms/page | ~35ms/page |
-| Object indexing | ✅ | ❌ |
-| Lazy loading | ✅ | ❌ |
-| LRU caching | ✅ | ❌ |
-| Large PDFs (700+ pages) | ✅ Fast | ❌ Slow |
 
 ## Examples
 
@@ -183,12 +171,12 @@ python main.py
 
 ## Requirements
 
-- Python 3.6+
+- Python 3.11+
 - No external dependencies!
 
 ## License
 
-Open source - free to use and modify.
+Open source - free to use and modify under the Apache License 2.0.
 
 ## Why justpdf?
 
@@ -204,6 +192,4 @@ Perfect for:
 - Data extraction workflows
 
 ---
-
-Made with ❤️ - Fast, simple, and powerful PDF reading for Python
-# justpdf
+Made with ❤️ by [Pujan Neupane](https://github.com/Pujan-Dev) — Fast, simple, and powerful PDF reading for Python.
