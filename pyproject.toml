@@ -1,0 +1,32 @@
+[build-system]
+requires = ["uv_build >= 0.9.26, <0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "justpdf"
+version = "0.0.1"
+authors = [
+    { name = "Pujan Neupane", email = "pujanneupaneop0907@gmail.com" },
+]
+description = "A lightweight, high-performance PDF text extraction library with a pandas-style API."
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Operating System :: OS Independent",
+]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+keywords = ["pdf", "text-extraction", "pypdf2", "document-processing", "reader"]
+
+[project.urls]
+Homepage = "https://github.com/Pujan-Dev/justpdf"
+Repository = "https://github.com/Pujan-Dev/justpdf"
+Issues = "https://github.com/Pujan-Dev/justpdf/issues"
