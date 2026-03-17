@@ -17,7 +17,7 @@ A lightweight, high-performance PDF text extraction library with a pandas-style 
 Install from PyPI:
 
 ```
-pip install -i https://test.pypi.org/simple/ justpdf==0.0.1
+pip install justpdf
 ```
 
 Or clone this repo:
