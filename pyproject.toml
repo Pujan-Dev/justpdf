@@ -4,15 +4,15 @@ build-backend = "uv_build"
 
 [project]
 name = "justpdf"
-version = "0.0.2"
+version = "0.2.0"
 authors = [
     { name = "Pujan Neupane", email = "pujanneupaneop0907@gmail.com" },
 ]
-description = "A lightweight, high-performance PDF text extraction library with a pandas-style API."
+description = "A small, dependency-free library for extracting text from PDFs."
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3",
@@ -24,7 +24,11 @@ classifiers = [
 ]
 license = "Apache-2.0"
 license-files = ["LICENSE"]
-keywords = ["pdf", "text-extraction", "pypdf2", "document-processing", "reader"]
+keywords = ["pdf", "text-extraction", "document-processing"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest"]
 
 [project.urls]
 Homepage = "https://github.com/Pujan-Dev/justpdf"

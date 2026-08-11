@@ -1,10 +1,7 @@
-# justpdf/__init__.py
-"""
-justpdf - Fast PDF Reader
-Pandas-style API for easy PDF text extraction
-"""
+"""justpdf - a small, dependency-free PDF text extraction library."""
 
-from .reader import PdfReader, PDFPage, read_pdf, read_pdf_info, search_pdf
+from .errors import PdfError, UnsupportedPdfError
+from .reader import Page, PdfReader, read_pdf
 
-__version__ = "1.0.0"
-__all__ = ["PdfReader", "PDFPage", "read_pdf", "read_pdf_info", "search_pdf"]
+__version__ = "0.1.0"
+__all__ = ["PdfReader", "Page", "read_pdf", "PdfError", "UnsupportedPdfError"]
