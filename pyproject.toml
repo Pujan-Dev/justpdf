@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "justpdf"
-version = "0.2.0"
+version = "0.3.0"
 authors = [
     { name = "Pujan Neupane", email = "pujanneupaneop0907@gmail.com" },
 ]

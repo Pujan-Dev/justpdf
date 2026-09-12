@@ -2,24 +2,63 @@ name: Publish to PyPI
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+  id-token: write
 
 jobs:
   build-and-publish:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - name: Run tests
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[dev]"
+          python -m pytest -q
+
+      - name: Auto-bump patch version
+        id: bump
+        run: |
+          python - <<'EOF'
+          import re, pathlib
+          p = pathlib.Path("pyproject.toml")
+          text = p.read_text()
+          m = re.search(r'^version\s*=\s*"(\d+)\.(\d+)\.(\d+)"', text, re.M)
+          if not m:
+              raise SystemExit("version not found in pyproject.toml")
+          major, minor, patch = map(int, m.groups())
+          new = f"{major}.{minor}.{patch + 1}"
+          text = re.sub(r'^version\s*=\s*".*?"', f'version = "{new}"', text, count=1, flags=re.M)
+          p.write_text(text)
+          print(f"new_version={new}")
+          with open("$GITHUB_OUTPUT", "a") as f:
+              f.write(f"new_version={new}\n")
+          EOF
+          echo "Bumped to $(grep '^version' pyproject.toml)"
+
+      - name: Commit bumped version [skip ci]
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pyproject.toml
+          git diff --staged --quiet || git commit -m "chore: bump version to ${{ steps.bump.outputs.new_version }} [skip ci]"
+          git push
 
       - name: Install build tools
         run: |
@@ -31,5 +70,3 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
